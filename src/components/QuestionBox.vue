@@ -12,7 +12,7 @@
                     v-for="(answer, index) in answers"
                     :key="index"
                     @click.prevent="selectAnswer(index)"
-                    :class ="[selectedIndex === index ? 'selected' : '']"
+                    :class ="answerClass(index)"
                     >
                     {{ answer }}
                 </b-list-group-item>
@@ -21,7 +21,7 @@
             <b-button 
                 variant="primary"
                 @click="submitAnswer"
-                :disabled="selectedIndex === null && answered"
+                :disabled="selectedIndex === null || answered"
             >
                 Submit
             </b-button> 
@@ -86,8 +86,11 @@ export default {
         shuffleAnswers(){
             let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer]
             this.shuffledAnswers = _.shuffle(answers)
-            this.correctIndex = this.shuffleAnswers.indexOf(this.correctQuestion.correct_answer)
-        }    
+            this.correctIndex = this.shuffledAnswers.indexOf(this.currentQuestion.correct_answer)
+        },
+        answerClass(index){
+            
+        }   
     }
 }
 </script>
