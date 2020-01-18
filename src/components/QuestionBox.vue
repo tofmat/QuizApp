@@ -88,9 +88,6 @@ export default {
             this.shuffledAnswers = _.shuffle(answers)
             this.correctIndex = this.shuffledAnswers.indexOf(this.currentQuestion.correct_answer)
         },
-        answerClass(index){
-            
-        }   
     }
 }
 </script>
